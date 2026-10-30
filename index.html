@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<meta name="description" content="Turbo Auto Care demo — vehicle servicing, diagnostics and maintenance.">
+<title>Turbo Auto Care | Automotive Excellence</title>
+<style>
+:root {
+  --bg:#101010;
+  --panel:#191919;
+  --muted:#b0b0b0;
+  --orange:#ff7417;
+  --white:#ffffff;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth;scroll-padding-top:80px}
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+a {color:inherit;text-decoration:none}
+.wrap {width:min(1100px,90%);margin:auto}
+header {
+  position:sticky;top:0;z-index:5;
+  background:#101010ed;
+  border-bottom:1px solid #303030;
+  backdrop-filter:blur(12px);
+}
+.nav {
+  min-height:72px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;
+}
+.brand {font-size:17px;font-weight:900;letter-spacing:.5px}
+.brand span {color:var(--orange)}
+nav {display:flex;gap:20px;align-items:center;font-size:13px}
+nav a:hover {color:var(--orange)}
+.button {
+  display:inline-block;background:var(--orange);color:#17100a;
+  padding:13px 20px;border-radius:7px;font-weight:800;
+  transition:transform .2s,background .2s;
+}
+.button:hover {transform:translateY(-2px);background:#ff9146}
+.button-outline {
+  background:transparent;color:white;border:1px solid #555;
+}
+.hero {
+  position:relative;overflow:hidden;
+  padding:95px 0 85px;
+  background:
+  radial-gradient(ellipse at 85% 25%,#71300d80,transparent 40%),
+  linear-gradient(120deg,#1a1a1a,#101010 70%);
+}
+.hero-grid {
+  display:grid;grid-template-columns:1.1fr .9fr;
+  align-items:center;gap:38px;
+}
+.eyebrow {
+  color:var(--orange);font-size:12px;font-weight:800;
+  letter-spacing:3px;text-transform:uppercase;
+}
+h1 {
+  font-size:clamp(40px,6vw,68px);
+  line-height:1.06;letter-spacing:-2px;margin:18px 0;
+}
+h1 span {color:var(--orange)}
+.hero-copy {color:#c5c5c5;max-width:490px;margin-bottom:27px}
+.actions {display:flex;flex-wrap:wrap;gap:10px}
+.visual {
+  min-height:300px;border:1px solid #4b3325;border-radius:20px;
+  background:
+  radial-gradient(ellipse at 50% 70%,#ff741745,transparent 50%),
+  linear-gradient(145deg,#292929,#151515);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;padding:25px;
+}
+.car-icon {font-size:100px;line-height:1.4;filter:drop-shadow(0 10px 20px #000)}
+.visual strong {font-size:21px}
+.visual p {color:#aaa;font-size:13px;margin-top:4px}
+.trust {
+  border-block:1px solid #303030;background:#151515;padding:23px 0;
+}
+.trust-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:15px;text-align:center;
+}
+.trust strong {display:block;color:var(--orange);font-size:15px}
+.trust small {color:#aaa}
+section.content {padding:76px 0}
+.heading {text-align:center;margin-bottom:36px}
+.heading h2 {font-size:clamp(28px,4vw,40px);line-height:1.2}
+.heading p {color:#aaa;margin-top:10px}
+.services {
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.card {
+  padding:23px 18px;background:var(--panel);
+  border:1px solid #303030;border-radius:13px;
+  transition:border-color .2s,transform .2s;
+}
+.card:hover {border-color:var(--orange);transform:translateY(-4px)}
+.icon {font-size:32px}
+.card h3 {font-size:17px;margin:12px 0 8px}
+.card p {color:#aaa;font-size:13px}
+.card a {display:inline-block;color:var(--orange);font-size:13px;margin-top:15px;font-weight:bold}
+.about {background:#191919}
+.about-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;
+}
+.about h2 {font-size:clamp(28px,4vw,39px);line-height:1.2;margin:12px 0}
+.about p {color:#bbb;margin:12px 0}
+.features {display:grid;gap:13px;margin-top:22px}
+.features div {border-bottom:1px solid #333;padding-bottom:10px}
+.features b {color:var(--orange);margin-right:8px}
+.quote {
+  padding:28px;background:#222;border:1px solid #383838;
+  border-radius:15px;
+}
+.quote .big {font-size:55px;color:var(--orange);line-height:1}
+.quote h3 {font-size:24px;margin:10px 0}
+.quote p {font-size:14px}
+.contact-box {
+  padding:42px 24px;text-align:center;
+  background:linear-gradient(135deg,#332014,#191919);
+  border:1px solid #58371f;border-radius:18px;
+}
+.contact-box h2 {font-size:clamp(27px,4vw,38px);line-height:1.2}
+.contact-box p {color:#ccc;margin:13px auto 23px;max-width:530px}
+footer {border-top:1px solid #303030;padding:27px 0;color:#999;font-size:12px}
+.footer-row {display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.note {color:#777;font-size:11px;margin-top:12px}
+@media(max-width:800px) {
+  .hero-grid {grid-template-columns:1fr}
+  .visual {min-height:220px}
+  .car-icon {font-size:75px}
+  .services {grid-template-columns:repeat(2,1fr)}
+  .about-grid {grid-template-columns:1fr}
+}
+@media(max-width:480px) {
+  .wrap {width:91%}
+  .nav {min-height:64px;gap:8px}
+  .brand {font-size:14px}
+  nav {gap:10px;font-size:11px}
+  nav .nav-contact {display:none}
+  .hero {padding:65px 0}
+  h1 {letter-spacing:-1.5px}
+  section.content {padding:55px 0}
+  .services {gap:10px}
+  .card {padding:17px 13px}
+  .card h3 {font-size:15px}
+  .trust-grid {gap:8px}
+  .trust strong {font-size:12px}
+  .trust small {font-size:10px}
+  .button {padding:12px 15px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="brand">🔧 TURBO <span>AUTO CARE</span></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Automotive care redefined</div>
+      <h1>Driven by care.<br>Built on <span>trust.</span></h1>
+      <p class="hero-copy">
+        Professional vehicle servicing and maintenance to help
+        keep your car ready for every journey.
+      </p>
+      <div class="actions">
+        <a class="button" href="#contact">Book an enquiry ↗</a>
+        <a class="button button-outline" href="#services">Explore services</a>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="car-icon">🏎️</div>
+      <strong>Precision. Performance. Care.</strong>
+      <p>Your local automotive service demo</p>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap trust-grid">
+    <div><strong>Vehicle Care</strong><small>Routine maintenance</small></div>
+    <div><strong>Clear Advice</strong><small>Understand your options</small></div>
+    <div><strong>Customer First</strong><small>Service with care</small></div>
+  </div>
+</div>
+
+<section class="content" id="services">
+  <div class="wrap">
+    <div class="heading">
+      <div class="eyebrow">What we offer</div>
+      <h2>Services for every journey</h2>
+      <p>Explore our sample automotive service categories.</p>
+    </div>
+    <div class="services">
+      <article class="card">
+        <div class="icon">🔧</div>
+        <h3>Car Servicing</h3>
+        <p>Routine vehicle maintenance tailored to service requirements.</p>
+        <a href="#contact">Make an enquiry ↗</a>
+      </article>
+      <article class="card">
+        <div class="icon">🛢️</div>
+        <h3>Oil & Filters</h3>
+        <p>Oil and filter replacement based on vehicle specifications.</p>
+        <a href="#contact">Make an enquiry ↗</a>
+      </article>
+      <article class="card">
+        <div class="icon">🖥️</div>
+        <h3>Diagnostics</h3>
+        <p>Help identifying vehicle warning lights and common issues.</p>
+        <a href="#contact">Make an enquiry ↗</a>
+      </article>
+      <article class="card">
+        <div class="icon">⚙️</div>
+        <h3>Repairs</h3>
+        <p>Discuss repair needs and maintenance options with the team.</p>
+        <a href="#contact">Make an enquiry ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="content about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">About the workshop</div>
+      <h2>Better care starts with the right conversation.</h2>
+      <p>We aim to make vehicle maintenance simpler through clear communication and thoughtful service.</p>
+      <div class="features">
+        <div><b>✓</b> Clear explanations of service options</div>
+        <div><b>✓</b> Maintenance based on vehicle needs</div>
+        <div><b>✓</b> Customer-focused communication</div>
+      </div>
+    </div>
+    <div class="quote">
+      <div class="big">“</div>
+      <h3>Every journey deserves care.</h3>
+      <p>Ask about available services, expected timelines and pricing before confirming work.</p>
+      <a class="button" href="#contact">Talk to us ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="eyebrow">Let's get started</div>
+      <h2>How can we help with your vehicle?</h2>
+      <p>Contact us to discuss your requirements or ask about available services.</p>
+      <a class="button" href="https://wa.me/91YOURNUMBER">Chat on WhatsApp ↗</a>
+      <p class="note">DEMO TEMPLATE — Replace the sample business details and WhatsApp number before launching for a real client.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>🔧 TURBO AUTO CARE</span>
+    <span>Demo website · <span id="year"></span></span>
+  </div>
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
